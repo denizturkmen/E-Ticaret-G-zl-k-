@@ -1,0 +1,40 @@
+﻿@using GlassesUI.Models;
+@model List<ProductModel>
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="container pb-5">
+    <div class="row">
+
+        <div class="col-md-3">
+            @Html.Action("GetCategories","Home")
+        </div>
+
+        <div class="col-md-9">
+            
+            @if (!Model.Any())
+            {
+                <div class="alert alert-danger" role="alert">
+                    <i class="fa fa-exclamation-circle"></i>
+                    Bu Kategoride ürün bulunmamaktadır
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-success" role="alert">
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                    <strong>@Model.Count() adet</strong> ürün bulundu.
+                </div>
+            }
+
+            @Html.Partial("_productList", Model)
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
